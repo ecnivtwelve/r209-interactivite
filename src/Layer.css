@@ -1,0 +1,9 @@
+.image-container {
+  position: absolute;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+}
