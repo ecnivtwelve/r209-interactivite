@@ -1,0 +1,11 @@
+.reference {
+  opacity: 0.5;
+}
+
+.texte {
+  mix-blend-mode: lighten;
+}
+
+.griffons {
+  mix-blend-mode: overlay;
+}
