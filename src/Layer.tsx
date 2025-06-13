@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import "./Layer.css";
 import interact from './interact.js';
 
-function Layer({ draggable, hide, debug, src, className, start = [0, 0], size = [1, 1], z = 0, hoverable = true, rotate = 0 }) {
+function Layer({ draggable, hide, debug, src, className, start = [0, 0], size = [1, 1], z = 0, hoverable = true, rotate = 0, onPress, onActive }) {
   if (hide) return null;
 
   const top = start[1] * 100 + "%";
@@ -19,6 +19,7 @@ function Layer({ draggable, hide, debug, src, className, start = [0, 0], size = 
   const [origin, setOrigin] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false); // Ajout de l'état drag
   const [ghostOut, setGhostOut] = useState(false); // Pour l'animation de sortie du ghost
+  const [wasDragging, setWasDragging] = useState(false); // Pour différencier drag et click
 
   // Prépare le canvas pour la lecture des pixels
   useEffect(() => {
@@ -93,8 +94,10 @@ function Layer({ draggable, hide, debug, src, className, start = [0, 0], size = 
       listeners: {
         start (event) {
           setIsDragging(true); // Début du drag
+          setWasDragging(false); // Réinitialise au début
         },
         move (event) {
+          setWasDragging(true); // Si move, c'est un drag
           const target = event.target;
           const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
           const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
@@ -191,6 +194,10 @@ function Layer({ draggable, hide, debug, src, className, start = [0, 0], size = 
         onMouseDown={() => setIsActive(true)}
         onMouseUp={() => setIsActive(false)}
         onMouseLeave={() => setIsActive(false)}
+        onClick={(e) => {
+          if (!wasDragging && onPress) onPress(e);
+          setWasDragging(false); // reset après le click
+        }}
       >
         <img
           ref={imgRef}

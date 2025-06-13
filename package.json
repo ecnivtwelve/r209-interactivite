@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "interactjs": "^1.10.27",
+    "motion": "^12.18.1",
+    "parallax-js": "^3.1.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },

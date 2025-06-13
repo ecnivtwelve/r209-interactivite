@@ -15,7 +15,7 @@
   background-position: center;
 }
 
-#image {
+#image-container {
   height: 100%;
   max-height: 100%;
   max-width: 100%;
@@ -26,13 +26,104 @@
   position: relative;
   border-radius: 12px;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   outline: 1px solid #00000033;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
+#informations {
+  background-color: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  max-width: 500px;
+  width: calc(100% - 40px);
+  margin: 20px 0;
+  margin-bottom: 20px;
+  margin-top: 0px;
+  overflow: hidden;
+  height: 80px;
+  max-height: 80px;
+  height: fit-content;
+  flex-shrink: 0;
+  transform: scale(1);
+
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#informations-content {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  gap: 4px;
+  height: 80px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#informations-content h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+#informations-content p {
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+
+#informations:not(.open) {
+  margin-bottom: 0;
+  max-height: 0;
+  transform: scale(0);
+  max-width: 0;
+}
+
+#image {
+  height: 105%;
+  aspect-ratio: 4.5 / 6;
+  position: relative;
+  object-fit: cover;
+  transition: height 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#image:hover {
+  height: 100%;
+}
+
 @media (max-aspect-ratio: 4.5/6) {
-  #image {
+  #image-container {
     width: calc(100% - 40px);
     height: auto;
   }
+}
+
+.reset-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px 20px;
+  background-color: #ffffff10;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #ffffffc1;
+  transition: background-color 0.1s ease;
+  backdrop-filter: blur(6px);
+  z-index: 999999;
+  border: 1px solid #ffffff40;
+}
+
+.reset-button:hover {
+  background-color: #ffffff30;
+}
+
+.credits {
+  margin-bottom: 20px;
+  font-size: 0.8rem;
+  opacity: 0.6;
+  color: white;
 }
