@@ -46,6 +46,7 @@ function App() {
               size={[1, 1]}
               z={2}
               hoverable={true}
+              draggable={true}
             />
             <Layer
               src={"/images/scotch.png"}
@@ -53,6 +54,7 @@ function App() {
               size={[1, 1]}
               z={3}
               hoverable={true}
+              draggable={true}
             />
             <Layer
               className={"texte"}
@@ -61,9 +63,11 @@ function App() {
               size={[1, 1]}
               z={4}
               hoverable={true}
+              draggable={true}
             />
             <Layer
               src={"/images/ose.png"}
+              className={"layerImg layerImg-1"}
               start={[0, 0.25]}
               size={[0.5, 0.3]}
               z={10}
@@ -84,6 +88,7 @@ function App() {
             />
             <Layer
               src={"/images/granit.png"}
+              className={"layerImg layerImg-2"}
               start={[0, 0]}
               size={[0.45, 0.47]}
               z={12}
@@ -102,6 +107,7 @@ function App() {
             />
             <Layer
               src={"/images/rennes.png"}
+              className={"layerImg layerImg-3"}
               start={[0.13, 0]}
               size={[0.43, 0.51]}
               z={11}
@@ -120,6 +126,7 @@ function App() {
             />
             <Layer
               src={"/images/lannion.png"}
+              className={"layerImg layerImg-4"}
               start={[0.5, 0]}
               size={[0.44, 0.51]}
               z={12}
@@ -142,6 +149,17 @@ function App() {
               size={[0.76, 0.72]}
               z={100}
               draggable
+              onPress={() => {
+                setInfoTitle("Vince LINISE");
+                setInfoText("C'est moi ça !");
+                if (currentInfo == 4) {
+                  setShowInfo(false);
+                  setCurrentInfo(-1);
+                } else {
+                  setShowInfo(true);
+                  setCurrentInfo(4);
+                }
+              }}
             />
           </div>
         </div>
@@ -175,6 +193,10 @@ function App() {
           </AnimatePresence>
         </div>
 
+        <p className="help">
+          Cliquez sur une image pour en voir les informatons. Glissez pour
+          déplacer.
+        </p>
         <p className="credits">Vince LINISE - MMI 1A1 - 2025</p>
       </div>
     </>

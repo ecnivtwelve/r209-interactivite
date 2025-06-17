@@ -91,6 +91,11 @@ function Layer({ draggable, hide, debug, src, className, start = [0, 0], size = 
     const container = containerRef.current;
     if (!container) return;
     interact(container).draggable({
+      inertia: {
+        resistance: 10,
+        minSpeed: 2,
+        endSpeed: 10
+      },
       listeners: {
         start (event) {
           setIsDragging(true); // Début du drag

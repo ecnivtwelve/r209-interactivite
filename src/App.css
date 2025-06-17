@@ -82,15 +82,11 @@
 }
 
 #image {
-  height: 105%;
+  height: 100%;
   aspect-ratio: 4.5 / 6;
   position: relative;
   object-fit: cover;
   transition: height 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-#image:hover {
-  height: 100%;
 }
 
 @media (max-aspect-ratio: 4.5/6) {
@@ -126,4 +122,16 @@
   font-size: 0.8rem;
   opacity: 0.6;
   color: white;
+}
+
+.help {
+  margin: 0 20px;
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+  opacity: 0.8;
+  color: white;
+  padding: 6px 14px;
+  border: 1px solid #fff;
+  border-radius: 300px;
+  text-align: center;
 }
